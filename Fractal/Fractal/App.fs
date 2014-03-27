@@ -56,10 +56,12 @@ let loadWindow() =
    
    let rec drawPythagorasTree(rects, level, ctx) =
         match level with
-        | 14 -> 0
+        | 16 -> 0
         | _ ->
             List.iter (fun x -> drawSquare(x,level,ctx)) rects
-            let newRects = List.fold (fun l rect -> l @ (Tree.generateChildren rect)) [] rects
+            let newRects = List.fold (fun l rect -> 
+                let tmp = (Tree.generateChildren rect)
+                tmp.Head :: tmp.Tail.Head :: l) [] rects
             Thread.Sleep(200)
             drawPythagorasTree(newRects,level+1,ctx)
 
