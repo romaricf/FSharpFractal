@@ -33,12 +33,14 @@ type Rect = {
     member x.p2 = squareLeftPoint(x.p1,x.p3)
     member x.p4 = squareRightPoint(x.p1,x.p3)
 
+let slideFactor = 1.03
+
 let generateLeftRec(rect:Rect) =
-    {p1 = rect.p4; p3 = {x=rect.p4.x+(rect.p4.x - rect.p1.x);y=rect.p4.y+(rect.p4.y - rect.p1.y)}}
+    {p1 = rect.p4; p3 = {x=rect.p4.x+(rect.p4.x - rect.p1.x)*slideFactor ; y=rect.p4.y+(rect.p4.y - rect.p1.y)*slideFactor}}
 
 let generateRightRec(rect:Rect) =
     let p1 = rect.p3
-    let p3 = {x=rect.p3.x+(rect.p4.x - rect.p1.x);y=rect.p3.y+(rect.p4.y - rect.p1.y)}
+    let p3 = {x=rect.p3.x+(rect.p4.x - rect.p1.x)/slideFactor;y=rect.p3.y+(rect.p4.y - rect.p1.y)/slideFactor}
     {p1 = squareRightPoint(p1,p3); p3 = squareLeftPoint(p1,p3) }
 
 let generateChildren(rect) =
