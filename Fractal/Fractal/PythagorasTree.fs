@@ -1,6 +1,7 @@
-﻿module Tree
+﻿module PythagorasTree
 
 open System
+open System.Threading
 
 let sqrt2 = Math.Sqrt(2.0)
 
@@ -47,3 +48,14 @@ let generateChildren(rect) =
         let leftRect = generateLeftRec(rect)
         let rightRect = generateRightRec(rect)
         [leftRect;rightRect]
+
+let rec drawPythagorasTree ctx drawSquare rects level =
+        match level with
+        | 13 -> 0
+        | _ ->
+            List.iter (fun x -> drawSquare ctx x level) rects
+            let newRects = List.fold (fun l rect -> 
+                let tmp = (generateChildren rect)
+                tmp.Head :: tmp.Tail.Head :: l) [] rects
+            Thread.Sleep(200)
+            drawPythagorasTree ctx drawSquare newRects (level+1)

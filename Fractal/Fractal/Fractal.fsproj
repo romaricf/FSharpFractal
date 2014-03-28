@@ -9,9 +9,10 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>Fractal2</RootNamespace>
     <AssemblyName>Fractal2</AssemblyName>
-    <targetframeworkversion>v4.5</targetframeworkversion>
+    <targetframeworkversion>v4.5.1</targetframeworkversion>
     <TargetFSharpCoreVersion>4.3.0.0</TargetFSharpCoreVersion>
     <Name>Fractal</Name>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -52,9 +53,13 @@
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
     <Compile Include="PythagorasTree.fs" />
+    <Compile Include="DrawCanvas.fs" />
     <Compile Include="App.fs" />
     <Resource Include="ApplicationResources.xaml" />
     <Resource Include="MainWindow.xaml" />
+    <None Include="App.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
