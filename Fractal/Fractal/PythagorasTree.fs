@@ -57,5 +57,5 @@ let rec drawPythagorasTree ctx drawSquare rects level =
             let newRects = List.fold (fun l rect -> 
                 let tmp = (generateChildren rect)
                 tmp.Head :: tmp.Tail.Head :: l) [] rects
-            Thread.Sleep(200)
+            Thread.Sleep(100)
             drawPythagorasTree ctx drawSquare newRects (level+1)
