@@ -34,7 +34,7 @@ type Rect = {
     member x.p2 = squareLeftPoint(x.p1,x.p3)
     member x.p4 = squareRightPoint(x.p1,x.p3)
 
-let slideFactor = 1.03
+let slideFactor = 1.0
 
 let generateLeftRec(rect:Rect) =
     {p1 = rect.p4; p3 = {x=rect.p4.x+(rect.p4.x - rect.p1.x)*slideFactor ; y=rect.p4.y+(rect.p4.y - rect.p1.y)*slideFactor}}
@@ -51,9 +51,10 @@ let generateChildren(rect) =
 
 let rec drawPythagorasTree ctx drawSquare rects level =
         match level with
-        | 13 -> 0
+        | 16 -> 0
         | _ ->
-            List.iter (fun x -> drawSquare ctx x level) rects
+//            List.iter (fun x -> drawSquare ctx x level) rects
+            drawSquare ctx rects level
             let newRects = List.fold (fun l rect -> 
                 let tmp = (generateChildren rect)
                 tmp.Head :: tmp.Tail.Head :: l) [] rects

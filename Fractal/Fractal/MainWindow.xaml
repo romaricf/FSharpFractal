@@ -4,8 +4,12 @@
         Title="" Height="500 " Width="500">
 
     <Grid>
-        <Canvas Name="Canvas" Background="DarkGray">
+        <!--<Canvas Name="Canvas" Background="LightGray">
             
-        </Canvas>
+        </Canvas>-->
+        <Grid Name="ViewPortContainer" Width="450" Height="450" Margin="0,10">
+            <Image Name="ImageViewport" />
+            <Rectangle Stroke="Black" />
+        </Grid>
     </Grid>
 </Window>

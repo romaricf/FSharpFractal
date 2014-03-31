@@ -36,7 +36,7 @@ let drawSquareCanvas (canvas:Canvas) uiContext (rect:Rect) level =
         
                 match level with
                     | x when x<7 -> polygon.Fill <- System.Windows.Media.Brushes.Chocolate
-                    | x when x<13 -> polygon.Fill <- System.Windows.Media.Brushes.DarkGreen
+                    | x when x<12 -> polygon.Fill <- System.Windows.Media.Brushes.DarkGreen
                     | _ -> polygon.Fill <- System.Windows.Media.Brushes.White
 
                 canvas.Children.Add(polygon) |> ignore
